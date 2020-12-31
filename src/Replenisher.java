@@ -14,7 +14,9 @@ public class Replenisher implements Runnable {
 
         while(monitor.hasClients()) {
             int refilledQuantity = monitor.refillMachine();
-            System.out.println("Reposador " + id + " reposa la màquina, hi ha " + (monitor.getMachineCapacity() - refilledQuantity) + " refrescs i en posa " + refilledQuantity);
+            if (refilledQuantity > 0) {
+                System.out.println("Reposador " + id + " reposa la màquina, hi ha " + (monitor.getMachineCapacity() - refilledQuantity) + " refrescs i en posa " + refilledQuantity);
+            }
         }
 
         System.out.println("Reposador " + id + " se'n va");

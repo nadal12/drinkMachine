@@ -15,7 +15,7 @@ public class DrinkMachineMonitor {
 
     synchronized public int refillMachine() {
 
-        while (productsQuantity == 10) {
+        while (productsQuantity == 10 && hasClients()) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -62,6 +62,7 @@ public class DrinkMachineMonitor {
 
     synchronized public void clientLeaves() {
         clientsQuantity--;
+        notify();
     }
 
     public int getClientsQuantity() {
