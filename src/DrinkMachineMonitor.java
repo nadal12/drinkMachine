@@ -2,23 +2,46 @@ public class DrinkMachineMonitor {
 
     private static final int MAX_TIME_TO_TAKE_PRODUCT = 5000;
     private static final int MAX_TIME_TO_REFILL_MACHINE = 5000;
-    private int machineCapacity;
+    private final int machineCapacity;
     private int productsQuantity = 0;
     private static int clientsQuantity;
+    private static int replenishersQuantity;
 
-    public DrinkMachineMonitor(int machineCapacity, int clientsQuantity) {
+    public DrinkMachineMonitor(int machineCapacity, int clientsQuantity, int replenishersQuantity) {
         this.machineCapacity = machineCapacity;
-        this.clientsQuantity = clientsQuantity;
+        DrinkMachineMonitor.clientsQuantity = clientsQuantity;
+        DrinkMachineMonitor.replenishersQuantity = replenishersQuantity;
     }
 
-    public void refillMachine() {
+    synchronized public int refillMachine() {
+
+        while (productsQuantity == 10) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         sleep((long) (Math.random() * MAX_TIME_TO_REFILL_MACHINE));
+        int refilledQuantity = machineCapacity - productsQuantity;
         productsQuantity = machineCapacity;
+        notifyAll();
+        return refilledQuantity;
     }
 
-    public void takeProduct() {
+    synchronized public void takeProduct() {
+        while (productsQuantity < 1) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         sleep((long) (Math.random() * MAX_TIME_TO_TAKE_PRODUCT));
         productsQuantity--;
+        notify();
     }
 
     private void sleep(long ms) {
@@ -33,11 +56,19 @@ public class DrinkMachineMonitor {
         return clientsQuantity > 0;
     }
 
-    public void clientLeaves() {
+    public boolean hasReplenishers() {
+        return replenishersQuantity > 0;
+    }
+
+    synchronized public void clientLeaves() {
         clientsQuantity--;
     }
 
-    public int getProductsQuantity() {
-        return productsQuantity;
+    public int getClientsQuantity() {
+        return clientsQuantity;
+    }
+
+    public int getMachineCapacity() {
+        return machineCapacity;
     }
 }

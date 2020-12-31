@@ -1,8 +1,8 @@
 public class DrinkMachineMain {
 
     private static final int MACHINE_CAPACITY = 10;
-    private static final int MAX_CLIENTS = 10;
-    private static final int MAX_REPLENISHERS = 5;
+    private static final int MAX_CLIENTS = 11;
+    private static final int MAX_REPLENISHERS = 6;
     private static final String [] names = {"Ivan", "Àlvar", "Narcís", "Virgínia", "Jessica", "Jonàs", "Pere", "Teix", "Aloma", "Remei"};
 
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class DrinkMachineMain {
         int replenishersNumber = (int) (Math.random() * MAX_REPLENISHERS);
 
         //Monitor
-        DrinkMachineMonitor monitor = new DrinkMachineMonitor(MACHINE_CAPACITY, clientsNumber);
+        DrinkMachineMonitor monitor = new DrinkMachineMonitor(MACHINE_CAPACITY, clientsNumber, replenishersNumber);
 
         Thread[] molecules = new Thread[clientsNumber + replenishersNumber];
 

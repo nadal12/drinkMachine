@@ -1,7 +1,7 @@
 public class Replenisher implements Runnable {
 
     private final int id;
-    private DrinkMachineMonitor monitor;
+    private final DrinkMachineMonitor monitor;
 
     public Replenisher(int id, DrinkMachineMonitor monitor) {
         this.id = id;
@@ -13,8 +13,8 @@ public class Replenisher implements Runnable {
         System.out.println("Reposador " + id + " arriba");
 
         while(monitor.hasClients()) {
-            System.out.println("Reposador " + id + " reposa la màquina, hi ha " + monitor.getProductsQuantity() + " i en posa ");
-            monitor.refillMachine();
+            int refilledQuantity = monitor.refillMachine();
+            System.out.println("Reposador " + id + " reposa la màquina, hi ha " + (monitor.getMachineCapacity() - refilledQuantity) + " refrescs i en posa " + refilledQuantity);
         }
 
         System.out.println("Reposador " + id + " se'n va");
