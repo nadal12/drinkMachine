@@ -2,7 +2,7 @@ public class DrinkMachineMain {
 
     private static final int MAX_CLIENTS = 11;
     private static final int MAX_REPLENISHERS = 6;
-    private static final String [] names = {"Ivan", "Àlvar", "Narcís", "Virgínia", "Jessica", "Jonàs", "Pere", "Teix", "Aloma", "Remei"};
+    private static final String[] names = {"Ivan", "Àlvar", "Narcís", "Virgínia", "Jessica", "Jonàs", "Pere", "Teix", "Aloma", "Remei"};
 
     public static void main(String[] args) {
 
@@ -45,6 +45,7 @@ public class DrinkMachineMain {
 
     /**
      * Mètode per cridar al join d'un fil en concret.
+     *
      * @param thread Fil del que es vol fer el join.
      */
     private static void join(Thread thread) {
@@ -57,6 +58,7 @@ public class DrinkMachineMain {
 
     /**
      * Mètode per fer esperes.
+     *
      * @param ms Milisegons que ha de durar l'espera.
      */
     private static void sleep(long ms) {

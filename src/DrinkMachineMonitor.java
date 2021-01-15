@@ -15,6 +15,7 @@ public class DrinkMachineMonitor {
     /**
      * Funció que omple la màquina fins a la seva capacitat màxima. Important que sigui
      * del tipus synchronized per asegurar l'exclusió mutua.
+     *
      * @return Retorna la quantitat d'elements que ha afegit.
      */
     synchronized public int refillMachine() {
@@ -69,6 +70,7 @@ public class DrinkMachineMonitor {
 
     /**
      * Mètode per fer esperes.
+     *
      * @param ms Milisegons que ha de durar l'espera.
      */
     private void sleep(long ms) {
@@ -81,6 +83,7 @@ public class DrinkMachineMonitor {
 
     /**
      * Funció per saber si queden clients o no.
+     *
      * @return True -> hi ha clients. False -> no hi ha clients.
      */
     synchronized public boolean hasClients() {
@@ -89,6 +92,7 @@ public class DrinkMachineMonitor {
 
     /**
      * Funció per saber si queden reposadors o no.
+     *
      * @return True -> hi ha reposadors. False -> no hi ha reposadors.
      */
     synchronized public boolean hasReplenishers() {
@@ -107,6 +111,7 @@ public class DrinkMachineMonitor {
 
     /**
      * Funció que retorna la quantitat de clients.
+     *
      * @return
      */
     public int getClientsQuantity() {
@@ -115,6 +120,7 @@ public class DrinkMachineMonitor {
 
     /**
      * Funció que retorna la capacitat de la màquina.
+     *
      * @return
      */
     public int getMachineCapacity() {
