@@ -1,3 +1,8 @@
+/*
+Nom i llintages: Nadal Llabrés Belmar
+Enllaç al vídeo: https://youtu.be/cirO6E5XHBU
+ */
+
 public class DrinkMachineMain {
 
     private static final int MAX_CLIENTS = 11;

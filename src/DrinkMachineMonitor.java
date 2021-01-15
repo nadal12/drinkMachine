@@ -1,3 +1,8 @@
+/*
+Nom i llintages: Nadal Llabrés Belmar
+Enllaç al vídeo: https://youtu.be/cirO6E5XHBU
+ */
+
 public class DrinkMachineMonitor {
 
     private static final int MAX_TIME_TO_TAKE_PRODUCT = 5000;   //Interval de temps per agafar el producte [0, 5000] ms.

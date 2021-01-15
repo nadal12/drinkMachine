@@ -1,3 +1,8 @@
+/*
+Nom i llintages: Nadal Llabrés Belmar
+Enllaç al vídeo: https://youtu.be/cirO6E5XHBU
+ */
+
 public class Client implements Runnable {
 
     private static final int MAX_DRINKS = 5; //Quantitat màxima de begudes que podrà agafar un client.
