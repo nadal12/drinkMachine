@@ -1,6 +1,6 @@
 /*
 Nom i llintages: Nadal Llabrés Belmar
-Enllaç al vídeo: https://youtu.be/cirO6E5XHBU
+Enllaç al vídeo: https://youtu.be/53h863nLFY4
  */
 
 public class DrinkMachineMonitor {
@@ -119,7 +119,7 @@ public class DrinkMachineMonitor {
      *
      * @return
      */
-    public int getClientsQuantity() {
+    synchronized public int getClientsQuantity() {
         return clientsQuantity;
     }
 
@@ -128,7 +128,7 @@ public class DrinkMachineMonitor {
      *
      * @return
      */
-    public int getMachineCapacity() {
+    synchronized public int getMachineCapacity() {
         return MACHINE_CAPACITY;
     }
 }

@@ -1,12 +1,12 @@
 /*
 Nom i llintages: Nadal Llabrés Belmar
-Enllaç al vídeo: https://youtu.be/cirO6E5XHBU
+Enllaç al vídeo: https://youtu.be/53h863nLFY4
  */
 
 public class DrinkMachineMain {
 
     private static final int MAX_CLIENTS = 11;
-    private static final int MAX_REPLENISHERS = 6;
+    private static final int MAX_REPLENISHERS = 0;
     private static final String[] names = {"Ivan", "Àlvar", "Narcís", "Virgínia", "Jessica", "Jonàs", "Pere", "Teix", "Aloma", "Remei"};
 
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class DrinkMachineMain {
         //Monitor
         DrinkMachineMonitor monitor = new DrinkMachineMonitor(clientsNumber, replenishersNumber);
 
-        Thread[] molecules = new Thread[clientsNumber + replenishersNumber];
+        Thread[] threads = new Thread[clientsNumber + replenishersNumber];
 
         //Missatge d'inici.
         System.out.println("COMENÇA LA SIMULACIÓ");
@@ -27,8 +27,8 @@ public class DrinkMachineMain {
 
         //Creació dels clients
         for (int i = 0; i < clientsNumber; i++) {
-            molecules[i] = new Thread(new Client(names[i], monitor));
-            molecules[i].start();
+            threads[i] = new Thread(new Client(names[i], monitor));
+            threads[i].start();
         }
 
         //Interval d'espera entre clients i reposadors.
@@ -36,12 +36,12 @@ public class DrinkMachineMain {
 
         //Creació dels reposadors.
         for (int i = clientsNumber; i < clientsNumber + replenishersNumber; i++) {
-            molecules[i] = new Thread(new Replenisher(i - clientsNumber + 1, monitor));
-            molecules[i].start();
+            threads[i] = new Thread(new Replenisher(i - clientsNumber + 1, monitor));
+            threads[i].start();
         }
 
         //Espera a que tots arribin a aquest punt.
-        for (Thread molecule : molecules) {
+        for (Thread molecule : threads) {
             join(molecule);
         }
 

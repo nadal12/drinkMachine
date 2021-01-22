@@ -1,6 +1,6 @@
 /*
 Nom i llintages: Nadal Llabrés Belmar
-Enllaç al vídeo: https://youtu.be/cirO6E5XHBU
+Enllaç al vídeo: https://youtu.be/53h863nLFY4
  */
 
 public class Client implements Runnable {
